@@ -9,14 +9,14 @@ jobs:
       with:
         persist-credentials: false
     - name: prepare
-      uses: npm install
+      run: npm install
       
     - name: build
-      uses: npm run export
+      run: npm run export
      
     - name: Build and Deploy
       uses: JamesIves/github-pages-deploy-action@releases/v3
       with:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        BRANCH: gh-pages # The branch the action should deploy to.
-        FOLDER: build # The folder the action should deploy.
+        BRANCH: master # The branch the action should deploy to.
+        FOLDER: __sapper__/export # The folder the action should deploy.
