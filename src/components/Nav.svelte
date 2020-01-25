@@ -58,6 +58,34 @@
   .TopBar-link:hover {
     background-color: rgba(67, 90, 111, 0.06);
   }
+  .TopBar-link:focus {
+    background: rgba(16, 112, 202, 0.09);
+  }
+  .TopBar-navRight {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+  .github-btn {
+    display: flex;
+    padding: 10px 12px;
+    border-radius: 5px;
+  }
+  .github-btn:hover {
+    background: rgba(67, 90, 111, 0.06);
+    text-decoration: none;
+  }
+  .github-btn:focus {
+    background: rgba(16, 112, 202, 0.09);
+  }
+  .github-btn span {
+    display: flex;
+    margin: auto;
+    padding-left: 5px;
+  }
 </style>
 
 <svelte:head>
@@ -87,6 +115,15 @@
         class:is-active={segment === 'playgrounds'}
         class="TopBar-link">
         Project Playground
+      </a>
+    </nav>
+    <nav class="TopBar-navRight">
+      <a href="https://github.com/CrosszPai" class="github-btn" target="_blank">
+        <img
+          src="octocat_64x64.png"
+          style="width:24px;height:24px;margin:auto"
+          alt="CrosszPai GitHub" />
+        <span>GitHub</span>
       </a>
     </nav>
   </div>
