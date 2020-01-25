@@ -72,13 +72,19 @@
       <h4>Siberian Husky said</h4>
       <h1>"Creatures is friend but furniture foe."</h1>
       <p>
-        husky is a medium-sized working dog breed. The breed belongs to the Spitz
-        genetic family. It is recognizable by its thickly furred double coat,
-        erect triangular ears, and distinctive markings, and is smaller than a
-        very similar-looking dog, the Alaskan Malamute.
-         <a class="Link" href="https://en.wikipedia.org/wiki/Siberian_Husky" target="_blank">For more information.</a>
+        husky is a medium-sized working dog breed. The breed belongs to the
+        Spitz genetic family. It is recognizable by its thickly furred double
+        coat, erect triangular ears, and distinctive markings, and is smaller
+        than a very similar-looking dog, the Alaskan Malamute.
+        <br />
+        <a
+          class="Link"
+          href="https://en.wikipedia.org/wiki/Siberian_Husky"
+          target="_blank">
+          For more information.
+        </a>
       </p>
-       
+
     </div>
     <div class="Hero-right">
       <img src="husky_quote.jpg" class="big-picture" alt="doggo" />
