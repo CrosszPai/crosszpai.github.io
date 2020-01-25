@@ -61,12 +61,14 @@
 </style>
 
 <svelte:head>
-  {#if segment && segment === 'undefine'}
-    <title>CrosszPai Github Pages</title>
-  {:else}
-    <title>
-      CrosszPai : {segment.replace(/^\w/, chr => chr.toUpperCase())}
-    </title>
+  {#if segment}
+    {#if segment === 'undefine'}
+      <title>CrosszPai Github Pages</title>
+    {:else}
+      <title>
+        CrosszPai : {segment.replace(/^\w/, chr => chr.toUpperCase())}
+      </title>
+    {/if}
   {/if}
 </svelte:head>
 
@@ -82,7 +84,7 @@
       </a>
       <a
         href="playgrounds"
-        class:is-active={segment === 'playgounds'}
+        class:is-active={segment === 'playgrounds'}
         class="TopBar-link">
         Project Playground
       </a>
