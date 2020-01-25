@@ -51,6 +51,10 @@
   }
 </style>
 
+<svelte:head>
+    <title>CrosszPai: Repositories</title>
+</svelte:head>
+
 <section>
   <div class="content">
     <ul>
