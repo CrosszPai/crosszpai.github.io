@@ -1,5 +1,9 @@
 <script>
   export let segment;
+  let title = segment;
+  $: {
+    title = segment;
+  }
 </script>
 
 <style>
@@ -87,18 +91,6 @@
     padding-left: 5px;
   }
 </style>
-
-<svelte:head>
-  {#if segment}
-    {#if segment === 'undefine'}
-      <title>CrosszPai Github Pages</title>
-    {:else}
-      <title>
-        CrosszPai : {segment.replace(/^\w/, chr => chr.toUpperCase())}
-      </title>
-    {/if}
-  {/if}
-</svelte:head>
 
 <div>
   <div class="TopBar">
