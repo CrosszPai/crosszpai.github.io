@@ -1,4 +1,9 @@
-# sapper-template
+# CrosszPai GitHub page
+Sofware development proccess assignment.
+Made with [Sapper](https://sapper.svelte.dev)
+
+
+## sapper-template
 
 The default [Sapper](https://github.com/sveltejs/sapper) template, available for Rollup and webpack.
 
