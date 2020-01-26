@@ -23,7 +23,7 @@ jobs:
           git status
           git rm -r .
           git commit -m "clean repo"
-          git push "https://CrosszPai:${{secrets.ACCESS_TOKEN}}@github.com/crosszpai.github.io.git" master
+          git push "https://CrosszPai:${{secrets.ACCESS_TOKEN}}@github.com/CrosszPai/crosszpai.github.io.git" master
           
     - name: prepare
       run: npm install
