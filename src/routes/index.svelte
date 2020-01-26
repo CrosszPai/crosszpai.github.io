@@ -63,7 +63,7 @@
 </style>
 
 <svelte:head>
-  <title>CrosszPai Github Pages</title>
+  <title>Narawittriprom Github Pages</title>
 </svelte:head>
 
 <section class="Hero">
