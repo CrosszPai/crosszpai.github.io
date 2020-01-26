@@ -22,6 +22,7 @@ jobs:
           git checkout -q master
           git status
           mkdir test
+          ls -a
           git rm -r *
           git commit -m "clean repo"
           git push -u origin master
