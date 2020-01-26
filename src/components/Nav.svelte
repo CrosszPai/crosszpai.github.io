@@ -1,12 +1,16 @@
 <script>
   export let segment;
+  import { onDestroy } from "svelte";
+  import { modal } from "../store.js";
   let title = segment;
-  let y;
+  const openmodal = () => {
+    modal.update(m => true);
+  };
   $: {
     title = segment;
   }
 </script>
-<svelte:window bind:scrollY={y} />
+
 <style>
   .is-active {
     background: rgba(16, 112, 202, 0.09);
@@ -74,22 +78,33 @@
     -ms-flex-align: center;
     align-items: center;
   }
-  .github-btn {
+  .btn {
     display: flex;
     padding: 10px 12px;
     border-radius: 5px;
   }
-  .github-btn:hover {
+  .btn:hover {
     background: rgba(67, 90, 111, 0.06);
     text-decoration: none;
   }
-  .github-btn:focus {
+  .btn:focus {
     background: rgba(16, 112, 202, 0.09);
   }
-  .github-btn span {
+  .btn span {
     display: flex;
     margin: auto;
     padding-left: 5px;
+  }
+  button {
+    border: none;
+    background: transparent;
+  }
+  button:hover,
+  :focus,
+  :active,
+  :visited {
+    cursor: pointer;
+    outline: none;
   }
 </style>
 
@@ -111,7 +126,10 @@
       </a>
     </nav>
     <nav class="TopBar-navRight">
-      <a href="https://github.com/CrosszPai" class="github-btn" target="_blank">
+      <button on:click={openmodal} class="btn">
+        <span>About Me</span>
+      </button>
+      <a href="https://github.com/CrosszPai" class="btn" target="_blank">
         <img
           src="octocat_64x64.png"
           style="width:24px;height:24px;margin:auto"
