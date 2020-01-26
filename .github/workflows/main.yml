@@ -21,7 +21,7 @@ jobs:
           cd tmp
           git checkout -q master
           git status
-          git rm -r . -v !(README.md)
+          git rm -r .
           git commit -m "clean repo"
           git push "https://CrosszPai:${{secrets.ACCESS_TOKEN}}@github.com/$INPUT_REPO.git" master
           
