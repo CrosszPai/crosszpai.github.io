@@ -1,11 +1,12 @@
 <script>
   export let segment;
   let title = segment;
+  let y;
   $: {
     title = segment;
   }
 </script>
-
+<svelte:window bind:scrollY={y} />
 <style>
   .is-active {
     background: rgba(16, 112, 202, 0.09);
@@ -92,7 +93,7 @@
   }
 </style>
 
-<div>
+<div style="position:fixed;width:100%;--">
   <div class="TopBar">
     <a href=".">Home</a>
     <nav class="TopBar-nav">

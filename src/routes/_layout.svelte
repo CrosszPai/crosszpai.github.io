@@ -10,6 +10,6 @@
 
 <Nav {segment}/>
 
-<main>
+<main style="padding-top:56px;">
 	<slot></slot>
 </main>
