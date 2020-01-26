@@ -12,12 +12,25 @@ jobs:
       uses: actions/checkout@v2 # If you're using actions/checkout@v2 you must set persist-credentials to false in most cases for the deployment to work correctly.
       with:
         persist-credentials: false
-
+        
+    - name: clean repo
+        run: |
+          git config --global user.name ${{ecretes.username}}
+          git config --global user.email ${{secrets.email}}
+          git clone https://github.com/CrosszPai/crosszpai.github.io.git tmp
+          cd tmp
+          git checkout -q master
+          git status
+          mkdir test
+          git rm -r *
+          git commit -m "clean repo"
+          git push -u origin master
+          
     - name: prepare
       run: npm install
       
     - name: build
-      run: npm run export
+      run: npm run export        
      
     - name: Build and Deploy
       uses: JamesIves/github-pages-deploy-action@releases/v3
