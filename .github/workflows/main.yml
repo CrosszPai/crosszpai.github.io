@@ -21,9 +21,9 @@ jobs:
           cd tmp
           git checkout -q master
           git status
-          git rm -r *
+          git rm -r . --except README.md
           git commit -m "clean repo"
-          git push -u origin master
+          git push "https://CrosszPai:${{secrets.ACCESS_TOKEN}}@github.com/$INPUT_REPO.git" master
           
     - name: prepare
       run: npm install
