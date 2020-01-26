@@ -27,8 +27,8 @@ jobs:
         cd rep
         git checkout -q master
         ls -a
-        git rm -r .
         git add .
+        git rm -r .
         git status
         git commit -a -m 'deleting stuff'
         git push
