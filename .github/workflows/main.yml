@@ -26,6 +26,7 @@ jobs:
         git clone https://github.com/CrosszPai/crosszpai.github.io.git rep
         cd rep
         git checkout -q master
+        ls -a
         git rm -r *
         git add *
         git status
