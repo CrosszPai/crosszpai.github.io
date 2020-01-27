@@ -114,6 +114,7 @@
     <nav class="TopBar-nav">
       <a
         href="repositories"
+        rel=prefetch
         class:is-active={segment === 'repositories'}
         class="TopBar-link">
         Repositories
