@@ -102,7 +102,6 @@
           </a>
         </p>
 
-
       </div>
       <div class="Hero-right">
         <img src={getQuote().image} class="big-picture" alt="doggo" />
