@@ -1,5 +1,59 @@
 <script>
   let repos = [];
+  let color_word = {
+    golang: {
+      color: "black",
+      background: "#7fd5ea"
+    },
+    vue: {
+      color: "white",
+      background: "#4fc08d"
+    },
+    vuejs: {
+      color: "white",
+      background: "#4fc08d"
+    },
+    arduino: {
+      color: "white",
+      background: "#00979d"
+    },
+    cpp: {
+      color: "white",
+      background: "#364f6f"
+    },
+    angular: {
+      color: "white",
+      background: "linear-gradient(145deg,#dd0031,#c3002f)"
+    },
+    angular8: {
+      color: "white",
+      background: "linear-gradient(145deg,#dd0031,#c3002f)"
+    },
+    image: {
+      color: "black",
+      background: "#e7d050"
+    },
+    ecs: {
+      color: "black",
+      background: "#e7d050"
+    },
+    "entity-component-system": {
+      color: "black",
+      background: "#e7d050"
+    },
+    sdl2: {
+      color: "white",
+      background: "#132B48"
+    },
+    firebase: {
+      color: "grey",
+      background: "#f8c42d"
+    },
+    "serial-communication": {
+      color: "black",
+      background: "#b3d2f8"
+    }
+  };
   import { onMount } from "svelte";
   onMount(async () => {
     const res = await fetch("https://api.github.com/users/CrosszPai/repos", {
@@ -14,6 +68,9 @@
       throw new Error(err);
     }
   });
+  const getClass = topic => {
+    return color_word[topic];
+  };
 </script>
 
 <style>
@@ -24,6 +81,7 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    flex-direction: column;
     padding: 80px 24px;
     -webkit-box-align: center;
     -ms-flex-align: center;
@@ -31,8 +89,6 @@
     justify-content: center;
   }
   .content ul {
-    max-height: 400px;
-    overflow-y: auto;
     width: 100%;
   }
   .content li {
@@ -41,36 +97,76 @@
     flex-direction: column;
     flex: 1;
     margin: 5px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-color: rgba(0, 0, 0, 0.1);
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
   }
-  .topic {
+    .topic {
+    margin-left: 15px;
+  }
+  .topic:first-child {
+    margin-left: 0;
+  }
+  .topic a {
     background: rgba(0, 0, 0, 0.05);
     transition: all 0.15s ease-in;
-    margin-left: 25px;
     letter-spacing: 0.4px;
     border-radius: 0.25rem;
+    font-size: 0.85rem;
+    text-align: center;
+    padding: 0.25rem 0.5rem;
+  }
+  .topic a:hover {
+    background: var(--topicbg);
+    color: var(--topictext);
+  }
+
+  .topic-link {
+    font-weight: bold;
+    font-size: 1.25rem;
   }
 </style>
 
 <svelte:head>
-    <title>CrosszPai: Repositories</title>
+  <title>CrosszPai: Repositories</title>
 </svelte:head>
 
 <section>
   <div class="content">
+  <p style="font-size:36px">
+    Public Repositories.
+  </p>
     <ul>
       {#each repos as repo}
         <li>
-          <a href={repo.html_url} target="__blank">{repo.name}</a>
-          <div style="display:block">
+          <a class="topic-link" href={repo.html_url} target="__blank">
+            {repo.name}
+          </a>
+          <div style="display:block;padding-top:1rem;">
             {#each repo.topics as topic}
-              <span class="topic">{topic}</span>
+              <span class="topic">
+                <a
+                  href={`https://github.com/topics/${topic}`}
+                  target="__blank"
+                  style="--topicbg:{getClass(topic).background};--topictext:{getClass(topic).color}"
+                  class="topiclink">
+                  {topic}
+                </a>
+              </span>
             {/each}
           </div>
+          {#if repo.description}
+            <p>{repo.description}</p>
+          {:else}
+            <p>no description</p>
+          {/if}
         </li>
       {:else}
         <div>
           <h1>Loading...</h1>
-          <h4>Maybe api server is in downtime.</h4>
+          <h4>Maybe api has reach GitHub limit-rate.</h4>
         </div>
       {/each}
     </ul>
