@@ -70,7 +70,7 @@
   <div class="Hero-inner">
     <div class="Hero-left">
       <h4>Siberian Husky said</h4>
-      <h1>"All of the creatures are a friend but furniture foe."</h1>
+      <h1>"Creatures is friend but furniture foe."</h1>
       <p>
         husky is a medium-sized working dog breed. The breed belongs to the
         Spitz genetic family. It is recognizable by its thickly furred double
