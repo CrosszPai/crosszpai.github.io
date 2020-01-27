@@ -21,7 +21,5 @@ const quote = [
         image: 'kuu.jpg'
     }
 ]
-quote.forEach(q => {
-    q.html = q.link.replace(/^\t{3}/gm, '');
-});
+
 export default quote
