@@ -166,7 +166,7 @@
       {:else}
         <div>
           <h1>Loading...</h1>
-          <h4>Maybe api server is in downtime.</h4>
+          <h4>Maybe api has reach GitHub limit-rate.</h4>
         </div>
       {/each}
     </ul>
