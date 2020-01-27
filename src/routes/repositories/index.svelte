@@ -1,6 +1,8 @@
-<script context="module">
-  export async function preload() {
-    const res = await this.fetch(
+<script>
+  export let repos = [];
+  import { onMount } from "svelte";
+  onMount(async () => {
+    const res = await fetch(
       "https://api.github.com/users/CrosszPai/repos",
       {
         headers: {
@@ -9,16 +11,10 @@
       }
     );
     if (res.status === 200) {
-      let repos = await res.json();
-      return { repos };
+      let _repos = await res.json();
+      repos = _repos;
     }
-    this.err(500, "Internal Error");
-    return [];
-  }
-</script>
-
-<script>
-  export let repos = [];
+  });
   let color_word = {
     svelte: {
       color: "white",
