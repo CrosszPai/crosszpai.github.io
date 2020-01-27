@@ -1,3 +1,22 @@
+<script>
+  let count = 0;
+  let interval = setInterval(time => (count += 1), 1000);
+  let datas = [];
+  import { onMount } from "svelte";
+  onMount(() => {
+    fetch("index.json")
+      .then(res => res.json())
+      .then(data => {
+        datas = data;
+      });
+  });
+  $: if (count === 5) {
+    clearInterval(interval);
+  }
+  $: console.log(count);
+  $: getQuote = () => (count === 5 ? datas[1] : datas[0]);
+</script>
+
 <style>
   .Hero h1 {
     margin-bottom: 0.4em;
@@ -67,27 +86,29 @@
 </svelte:head>
 
 <section class="Hero">
-  <div class="Hero-inner">
-    <div class="Hero-left">
-      <h4>Siberian Husky said</h4>
-      <h1>"Creatures is friend but furniture foe."</h1>
-      <p>
-        husky is a medium-sized working dog breed. The breed belongs to the
-        Spitz genetic family. It is recognizable by its thickly furred double
-        coat, erect triangular ears, and distinctive markings, and is smaller
-        than a very similar-looking dog, the Alaskan Malamute.
-        <br />
-        <a
-          class="Link"
-          href="https://en.wikipedia.org/wiki/Siberian_Husky"
-          target="_blank">
-          For more information.
-        </a>
-      </p>
+  {#if datas[0]}
+    {#if count != 5}
+      <h1 style="display:absolute;margin-left:10px">{5-count}</h1>
+    {/if}
+    <div class="Hero-inner">
+      <div class="Hero-left">
+        <h4>{getQuote().header}</h4>
+        <h1>{getQuote().subheader}</h1>
+        <p>
+          {getQuote().describe}
+          <br />
+          <a class="Link" href={getQuote().href} target="_blank">
+            {getQuote().link}
+          </a>
+        </p>
 
+
+      </div>
+      <div class="Hero-right">
+        <img src={getQuote().image} class="big-picture" alt="doggo" />
+      </div>
     </div>
-    <div class="Hero-right">
-      <img src="husky_quote.jpg" class="big-picture" alt="doggo" />
-    </div>
-  </div>
+  {:else}
+    <h1>Load pap</h1>
+  {/if}
 </section>
