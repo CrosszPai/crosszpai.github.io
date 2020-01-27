@@ -1,15 +1,13 @@
 <script>
   export let repos = [];
   import { onMount } from "svelte";
+  let y;
   onMount(async () => {
-    const res = await fetch(
-      "https://api.github.com/users/CrosszPai/repos",
-      {
-        headers: {
-          Accept: "application/vnd.github.mercy-preview+json"
-        }
+    const res = await fetch("https://api.github.com/users/CrosszPai/repos", {
+      headers: {
+        Accept: "application/vnd.github.mercy-preview+json"
       }
-    );
+    });
     if (res.status === 200) {
       let _repos = await res.json();
       repos = _repos;
@@ -80,6 +78,7 @@
   const getClass = topic => {
     return color_word[topic];
   };
+  $: y, console.log(y);
 </script>
 
 <style>
@@ -136,13 +135,29 @@
     font-weight: bold;
     font-size: 1.25rem;
   }
+  .toy {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    height: 32px;
+    vertical-align: center;
+    text-align: center;
+    color: var(--currentY);
+    border: solid 2px var(--currentY);
+    border-right: none;
+    border-radius: 5px 0 0 5px;
+    display: flex;
+    padding: 5px;
+  }
 </style>
 
+<svelte:window bind:scrollY={y} />
 <svelte:head>
   <title>CrosszPai: Repositories</title>
 </svelte:head>
 
 <section>
+  <div class="toy" style="--currentY:#{y}"><p style="margin:auto">{y}px</p></div>
   <div class="content">
     <p style="font-size:36px">Public Repositories.</p>
     <ul>

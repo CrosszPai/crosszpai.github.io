@@ -32,12 +32,17 @@
       <h2 style="margin:auto;font-weight:400">About Me</h2>
     </div>
     <div style="display:flex;flex-direction:column;">
-      <img src="husky_quote.jpg" alt="" />
+      <img src="kuu2.jpg" alt="" />
 	  <div style="padding:20px">
 	  	<p>
-		  I'm not stoopid doggo! <br>
-		  all of catto no shood get out of ma buddy house!
+		  Narawit Triprom ภาษาไทยคือ นราวิชญ์ ไตรพรม <br>
+		  เรียนอยู่ลาดกระบัง วิศวะภาคคอมครับ <br>
+      เลิกกินแอลกอฮอล์แล้วด้วย
 		  </p>
+      <hr>
+      <p>
+        เว็บนี้ทำจาก svelte + sapper เลยนะ eieieie
+      </p>
 	  </div>
     </div>
   </Modal>
