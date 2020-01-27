@@ -89,7 +89,6 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
     padding: 80px 24px;
     -webkit-box-align: center;
     -ms-flex-align: center;
@@ -97,6 +96,8 @@
     justify-content: center;
   }
   .content ul {
+    max-height: 400px;
+    overflow-y: auto;
     width: 100%;
   }
   .content li {
@@ -117,23 +118,12 @@
   .topic:first-child {
     margin-left: 0;
   }
-  .topic a {
+  .topic {
     background: rgba(0, 0, 0, 0.05);
     transition: all 0.15s ease-in;
+    margin-left: 25px;
     letter-spacing: 0.4px;
     border-radius: 0.25rem;
-    font-size: 0.85rem;
-    text-align: center;
-    padding: 0.25rem 0.5rem;
-  }
-  .topic a:hover {
-    background: var(--topicbg);
-    color: var(--topictext);
-  }
-
-  .topic-link {
-    font-weight: bold;
-    font-size: 1.25rem;
   }
   .toy {
     position: fixed;
@@ -153,7 +143,7 @@
 
 <svelte:window bind:scrollY={y} />
 <svelte:head>
-  <title>CrosszPai: Repositories</title>
+    <title>CrosszPai: Repositories</title>
 </svelte:head>
 
 <section>
@@ -163,32 +153,17 @@
     <ul>
       {#each repos as repo}
         <li>
-          <a class="topic-link" href={repo.html_url} target="__blank">
-            {repo.name}
-          </a>
-          <div style="display:block;padding-top:1rem;">
+          <a href={repo.html_url} target="__blank">{repo.name}</a>
+          <div style="display:block">
             {#each repo.topics as topic}
-              <span class="topic">
-                <a
-                  href={`https://github.com/topics/${topic}`}
-                  target="__blank"
-                  style="--topicbg:{getClass(topic).background};--topictext:{getClass(topic).color}"
-                  class="topiclink">
-                  {topic}
-                </a>
-              </span>
+              <span class="topic">{topic}</span>
             {/each}
           </div>
-          {#if repo.description}
-            <p>{repo.description}</p>
-          {:else}
-            <p>no description</p>
-          {/if}
         </li>
       {:else}
         <div>
           <h1>Loading...</h1>
-          <h4>Maybe api has reach GitHub limit-rate.</h4>
+          <h4>Maybe api server is in downtime.</h4>
         </div>
       {/each}
     </ul>
