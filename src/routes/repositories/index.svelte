@@ -1,6 +1,33 @@
+<script context="module">
+  export async function preload() {
+    const res = await this.fetch(
+      "https://api.github.com/users/CrosszPai/repos",
+      {
+        headers: {
+          Accept: "application/vnd.github.mercy-preview+json"
+        }
+      }
+    );
+    if (res.status === 200) {
+      let repos = await res.json();
+      return { repos };
+    }
+    this.err(500, "Internal Error");
+    return [];
+  }
+</script>
+
 <script>
-  let repos = [];
+  export let repos = [];
   let color_word = {
+    svelte: {
+      color: "white",
+      background: "#ff3e00"
+    },
+    sapper: {
+      color: "white",
+      background: "#159794"
+    },
     golang: {
       color: "black",
       background: "#7fd5ea"
@@ -54,20 +81,6 @@
       background: "#b3d2f8"
     }
   };
-  import { onMount } from "svelte";
-  onMount(async () => {
-    const res = await fetch("https://api.github.com/users/CrosszPai/repos", {
-      headers: {
-        Accept: "application/vnd.github.mercy-preview+json"
-      }
-    });
-    let err = await res.json();
-    if (res.ok) {
-      repos = err;
-    } else {
-      throw new Error(err);
-    }
-  });
   const getClass = topic => {
     return color_word[topic];
   };
@@ -103,7 +116,7 @@
     padding-top: 1rem;
     padding-bottom: 0.5rem;
   }
-    .topic {
+  .topic {
     margin-left: 15px;
   }
   .topic:first-child {
@@ -135,9 +148,7 @@
 
 <section>
   <div class="content">
-  <p style="font-size:36px">
-    Public Repositories.
-  </p>
+    <p style="font-size:36px">Public Repositories.</p>
     <ul>
       {#each repos as repo}
         <li>
