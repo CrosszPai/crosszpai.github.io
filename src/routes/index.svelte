@@ -3,12 +3,9 @@
   let interval = setInterval(time => (count += 1), 1000);
   let datas = [];
   import { onMount } from "svelte";
+  import quote from "./_quote.js";
   onMount(() => {
-    fetch("index.json")
-      .then(res => res.json())
-      .then(data => {
-        datas = data;
-      });
+    datas = quote;
   });
   $: if (count === 5) {
     clearInterval(interval);
@@ -88,7 +85,7 @@
 <section class="Hero">
   {#if datas[0]}
     {#if count != 5}
-      <h1 style="display:absolute;margin-left:10px">{5-count}</h1>
+      <h1 style="display:absolute;margin-left:10px">{5 - count}</h1>
     {/if}
     <div class="Hero-inner">
       <div class="Hero-left">
